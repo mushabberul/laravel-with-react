@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route,Link } from "react-router";
 
-export default function HelloReact()
-{
-    return(
-        <h1>Hello,React JS</h1>
+import Home from './Home';
+import About from './About';
+
+
+function MyApp() {
+    return (
+        <BrowserRouter>
+            <nav>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                </ul>
+            </nav>
+
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+            </Routes>
+        </BrowserRouter>
     );
-}
-const container = document.getElementById('app');
-const root = ReactDOM.createRoot(container);
-root.render(<HelloReact />);
 
+}
+
+
+ReactDOM.createRoot(document.getElementById('app')).render(<MyApp />);
